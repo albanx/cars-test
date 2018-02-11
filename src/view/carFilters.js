@@ -1,5 +1,5 @@
-const renderFilters = ({orderBy = 'Price', group = false}) => {
-  return `
+const renderFilters = ({orderBy = 'Price', group = false}) =>
+  `
   <form>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -23,6 +23,5 @@ const renderFilters = ({orderBy = 'Price', group = false}) => {
   </div>
   </form>
   `;
-};
 
 export default renderFilters;

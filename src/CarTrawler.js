@@ -17,6 +17,12 @@ export default class CarTrawler {
     this.carList = [];
     this.reservation = null;
     this.orderBy = 'Price';
+    this.navMapping = {
+      '.car-link': this.navigateToCarDetails.bind(this),
+      '.back-to-search': this.navigateBackToSearch.bind(this),
+      '.sortby': this.navigateToSearchWithSort.bind(this),
+      '#group': this.navigateToSearchWithGroup.bind(this)
+    }
   }
 
   start() {
@@ -29,42 +35,53 @@ export default class CarTrawler {
 
   bindEvents() {
     this.domElement.addEventListener('click', e => {
-      let el = e.target;
-      if (el) {
-        if (el.matches('a.car-link')) {
-          e.preventDefault();
-          let href = el.getAttribute('href');
-          let index = parseInt(href.replace('/car/', ''));
-          history.pushState(null, el.innerHTML, href);
-          this.renderCarDetails(index);
-        } else if (el.matches('.back-to-search')) {
-          history.pushState(null, '', '/');
-          this.renderCarList();
-        } else if (el.matches('.sortby')) {
-          this.orderBy = el.value;
-          this['orderBy' + this.orderBy]();
-          this.renderCarList();
-        } else if (el.matches('#group')) {
-          if (el.checked) {
-            this.renderCarListByVendor();
-          } else {
-            this.renderCarList();
-          }
-        }
+      if (e.target) {
+        this.handleClickEvent(e.target, e)
       }
     })
   }
 
+  handleClickEvent(el, event) {
+    for(let key in this.navMapping) {
+      if (el.matches(key)) {
+        event.preventDefault();
+        return this.navMapping[key](el);
+      }
+    }
+  }
+
+  navigateToSearchWithGroup(el) {
+    if (el.checked) {
+      this.renderCarListByVendor();
+    } else {
+      this.renderCarList();
+    }
+  }
+
+  navigateToSearchWithSort(el) {
+    this.orderBy = el.value;
+    this['orderBy' + this.orderBy]();
+    this.renderCarList();
+  }
+
+  navigateBackToSearch(el) {
+    history.pushState(null, '', '/');
+    this.renderCarList();
+  }
+
+  navigateToCarDetails(el) {
+    let href = el.getAttribute('href');
+    let index = parseInt(href.replace('/car/', ''));
+    history.pushState(null, el.innerHTML, href);
+    this.renderCarDetails(index);
+  }
+
   orderByModel() {
-    this.carList = this.carList.sort((car1, car2) => {
-      return car1.getModelName() > car2.getModelName();
-    })
+    this.carList = this.carList.sort((car1, car2) => car1.getModelName() > car2.getModelName());
   }
 
   orderByPrice() {
-    this.carList = this.carList.sort((car1, car2) => {
-      return car1.getPrice() > car2.getPrice();
-    })
+    this.carList = this.carList.sort((car1, car2) => car1.getPrice() > car2.getPrice());
   }
 
   renderPage(header, content) {
@@ -76,11 +93,9 @@ export default class CarTrawler {
   }
 
   renderCarListByVendor() {
-    let vendors = this.carList.map(car => {
-      return car.getVendor();
-    }).filter((elem, pos, arr) => {
-      return arr.indexOf(elem) === pos;
-    });
+    let vendors = this.carList
+      .map(car => car.getVendor())
+      .filter((elem, pos, arr) => arr.indexOf(elem) === pos);
 
     this.renderPage(
       renderReservation(this.reservation),

@@ -1,5 +1,4 @@
-const renderReservation = reservation => {
-  return `
+const renderReservation = reservation => `
   <div class="card text-white bg-primary">
     <div class="card-body">
       <h5 class="card-title">Reservation Information</h5>
@@ -15,7 +14,6 @@ const renderReservation = reservation => {
       </p>
     </div>
   </div>
-  `;
-};
+`;
 
 export default renderReservation;

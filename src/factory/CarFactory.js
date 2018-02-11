@@ -14,19 +14,18 @@ const createCar = ({
                      DoorCount,
                      VehMakeModel,
                      PictureURL
-                   }) => {
-  return new Car(
-    AirConditionInd,
-    TransmissionType,
-    FuelType,
-    DriveType,
-    PassengerQuantity,
-    BaggageQuantity,
-    Code,
-    CodeContext,
-    DoorCount,
-    createModel(cleanKeys(VehMakeModel)),
-    PictureURL)
-}
+                   }) => new Car(
+  AirConditionInd,
+  TransmissionType,
+  FuelType,
+  DriveType,
+  PassengerQuantity,
+  BaggageQuantity,
+  Code,
+  CodeContext,
+  DoorCount,
+  createModel(cleanKeys(VehMakeModel)),
+  PictureURL);
+
 
 export default createCar;
