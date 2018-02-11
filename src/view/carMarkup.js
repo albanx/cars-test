@@ -10,7 +10,7 @@ const renderCar = (car, index, hideMe = false) => `
         </h3>
         <div class="mb-1 text-muted">${car.getPriceString()}</div>
         <p class="card-text mb-auto">${renderFeatures(car)}</p>
-        ${hideMe ?'' : `<a class="car-link btn btn-info" href="/car/${index}">More info</a>`}
+        ${hideMe ? '' : `<a class="car-link btn btn-info" href="/car/${index}">More info</a>`}
       </div>
       <img class="card-img-right" alt="this is a car" src="${car.getUrlImage()}">
     </div>

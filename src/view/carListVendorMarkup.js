@@ -2,7 +2,7 @@ import renderCar from './carMarkup';
 import renderFilters from './carFilters';
 
 const renderVendorCars = (vendorName, cars) =>
-`
+  `
   <div class="card border-primary">
     <div class="card-header">${vendorName}</div>
     <div class="card-body text-primary">
@@ -15,7 +15,7 @@ const renderVendorCars = (vendorName, cars) =>
 
 
 const renderListByVendor = (vendors, filters) =>
-`
+  `
   <div class="col-md-12">
     ${renderFilters(filters)}
   </div>

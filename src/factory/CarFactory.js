@@ -25,7 +25,8 @@ const createCar = ({
   CodeContext,
   DoorCount,
   createModel(cleanKeys(VehMakeModel)),
-  PictureURL);
+  PictureURL
+);
 
 
 export default createCar;

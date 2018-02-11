@@ -1,7 +1,5 @@
-export default class Vendor
-{
-  constructor(name, code)
-  {
+export default class Vendor {
+  constructor(name, code) {
     this.name = name;
     this.code = code;
     this.carList = [];

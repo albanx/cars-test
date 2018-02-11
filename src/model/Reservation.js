@@ -24,7 +24,7 @@ export default class Reservation {
 
   getDateHuman(dateString) {
     let date = new Date(dateString);
-    return `${date.getDay()} - ${date.getMonth()+1} - ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+    return `${date.getDay()} - ${date.getMonth() + 1} - ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
   }
 
   getLocationNameStart() {

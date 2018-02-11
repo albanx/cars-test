@@ -4,6 +4,7 @@ import './css/bootstrap.min.css';
 import CarTrawler from './CarTrawler';
 import {URL_API} from './constants';
 import {get} from './utility/Request';
+
 const renderToDomElement = document.querySelector('#main');
 
 const start = async () => {

@@ -42,7 +42,7 @@ export default class CarTrawler {
   }
 
   handleClickEvent(el, event) {
-    for(let key in this.navMapping) {
+    for (let key in this.navMapping) {
       if (el.matches(key)) {
         event.preventDefault();
         return this.navMapping[key](el);
@@ -99,7 +99,7 @@ export default class CarTrawler {
 
     this.renderPage(
       renderReservation(this.reservation),
-      renderListByVendor(vendors,  {orderBy: this.orderBy, group: true})
+      renderListByVendor(vendors, {orderBy: this.orderBy, group: true})
     );
   }
 
