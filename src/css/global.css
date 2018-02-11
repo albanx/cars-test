@@ -1,0 +1,35 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+.car-features {
+  list-style: circle;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.car-features li {
+  padding: 0;
+  flex-grow: 1;
+  margin-left: 16px;
+  width: 150px;
+}
+
+.card-img-right {
+  width: 160px;
+  height: 100px;
+}
